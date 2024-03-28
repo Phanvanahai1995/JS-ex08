@@ -83,7 +83,6 @@ const Register = function (name, password, email) {
   this.email = email;
 };
 
-// console.log(dataRegister);
 const data = [];
 const handleRegister = function (name, password, email) {
   if (!name || !password || !email) {
@@ -107,17 +106,17 @@ console.log(handleRegister("Nguyen Van A", "123456", "nguyenvana@email.com"));
 console.log(handleRegister("Nguyen Van B", "123456", "nguyenvanb@email.com"));
 console.log(handleRegister("Nguyen Van C", "123456", "nguyenvana@email.com"));
 
-const dataLogin = [];
 const handleLogin = function (email, password) {
   for (const user of data) {
     if (user.email === email && user.password === password) {
-      dataLogin.push(user);
+      return user;
     }
   }
 
-  dataLogin.length === 0
-    ? console.log("Thông tin đăng nhập không hợp lệ")
-    : console.log(dataLogin);
+  return `Thông tin đăng nhập không hợp lệ`;
 };
 
-handleLogin("nguyenvana@email.com", "123456");
+const dataLogin = handleLogin("nguyenvana@email.com", "123456");
+console.log(dataLogin);
+const dataLogin2 = handleLogin("nguyenvanb@email.com");
+console.log(dataLogin2);
